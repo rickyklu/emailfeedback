@@ -3,6 +3,10 @@ const passport = require('passport')
 
 module.exports = (app) => {
 	// when user hits route, authenticate with password google oath
+	app.get('/', (req, res) => {
+		res.send("server route hit");
+	})
+
 	app.get('/auth/google', passport.authenticate('google', {
 		scope: ['profile', 'email']
 	}));
