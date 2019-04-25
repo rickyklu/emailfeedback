@@ -1,5 +1,5 @@
 /*
-SurveyForm: shows form for user to input survey info
+SurveyForm: renders form for user to input survey info
 */
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
@@ -43,7 +43,7 @@ class SurveyForm extends Component {
 // validates the form entries
 function validate(values) {
 	const errors = {};
-	errors.email = validateEmails(values.email || '');
+	errors.recipients = validateEmails(values.recipients || '');
 	formFields.forEach(({name}) => {
 		if (!values[name]) {
 			errors[name] = `You must provide a valid value.`
