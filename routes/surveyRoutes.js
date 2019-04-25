@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
@@ -10,6 +11,13 @@ module.exports = app => {
 		res.send('Thank you for your feedback!');
 	});
 
+	// webhook so when user clicks on response in email, response is logged
+	app.post('/api/surveys/webhooks', (req, res) => {
+		console.log(req.body);
+		res.send({});
+	});
+
+	// send survey data to sendgrid so email can be sent out
 	app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
 		const { title, subject, body, recipients } = req.body;
 
@@ -32,7 +40,7 @@ module.exports = app => {
 			req.user.credits = req.user.credits - 1;
 			const user = await req.user.save();
 
-			// send back user, update header
+			// send back user model, updates header
 			res.send(user);
 		}	catch (err) {
 			res.status(422).send(err);
