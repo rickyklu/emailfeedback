@@ -9,9 +9,19 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
+	// dashboard route upon login
+	app.get('/api/surveys', requireLogin, async (req, res) => {
+		const surveys = await Survey.find({ _user: req.user.id })
+			// prevents DB query from pulling ALL surveys (incl ones not from the user)
+			.select({ recipients: false });
+
+		res.send(surveys);
+	});
+
+	// after customer responds to a survey
 	app.get('/api/surveys/:surveyId/:choice', (req, res) => {
 		res.send('Thank you for your feedback!');
-	});	
+	});
 
 	// webhook so when user clicks on response in email, response is logged
 	app.post('/api/surveys/webhooks', (req, res) => {
