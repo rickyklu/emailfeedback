@@ -25,6 +25,8 @@ module.exports = app => {
 
 	// webhook so when user clicks on response in email, response is logged
 	app.post('/api/surveys/webhooks', (req, res) => {
+		//testing
+		// console.log(req.body);
 		const p = new Path('/api/surveys/:surveyId/:choice');
 
 		_.chain(req.body)
