@@ -11,9 +11,9 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "dev": "concurrently \"npm run server \" \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webhook": "lt -p 5000 -s qazpolamsj"
+    "webhook": "node ngrok_webhook.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "localtunnel": "^1.9.1",
     "lodash": "^4.17.11",
     "mongoose": "^5.5.1",
+    "ngrok": "^3.1.1",
     "nodemon": "^1.18.11",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",

@@ -1,7 +1,9 @@
-const keys = require('./config/keys');
-
 const localtunnel = require('localtunnel');
-localtunnel(5000, { subdomain: keys.localTunnelUrl }, function(err, tunnel) {
+const forever = require('forever');
+const keys = require('./config/keys');
+const ltUrl = 'https://qazpolamsj.localtunnel.me'
+
+const tunn = localtunnel(5000, { subdomain: ltUrl }, function (err, tunnel) {
 	if (err) {
 		console.log('error', err);
 	}

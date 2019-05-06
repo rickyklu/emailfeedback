@@ -15,15 +15,8 @@ class Header extends Component {
 			default:
 				return (
 					[
-						<li key='1'><Payments /></li>,
-						<li key='4'>
-							<Link 
-								to={ this.props.auth ? '/surveys' : '/' } 
-								className="btn"
-							>
-								Dashboard
-							</Link>
-						</li>,
+						<li key='1'><Payments className="addCredits" /></li>,
+						<li key='4'><a href='/surveys'>Dashboard</a></li>,
 						<li key='3' style={{margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
 						<li key='2'><a href='/api/logout'>Logout</a></li>
 					]
@@ -38,8 +31,10 @@ class Header extends Component {
 					<Link 
 						to={ this.props.auth ? '/surveys' : '/' } 
 						className="left brand-logo"
+						style={{ "marginLeft": "10px"}}
 					>
 						Email Feedback
+						<i style={{"fontSize" : "2.3rem"}} className="right material-icons ">contact_mail</i>
 					</Link>
 					<ul className="right">
 						{ this.renderContent() }

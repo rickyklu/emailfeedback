@@ -24,6 +24,13 @@ Customers will receive an email and will receive a simple text email with the su
 * Clone or download the files
 * `cd` the `server` directory.
 * run `npm run dev` to run the development server. It will run the Node.js backend and React front end
+* Under `/server/config` copy the `prod.js` file and rename the copy file as `dev.js'`. Replace the `proccess.env` keys with your own:
+** Google 2.0 OAuth keys
+** MongoDB URI
+** Cookies key
+** Stripe Account Keys
+** SendGrid Keys
+** Localtunnel URL
 * In a different terminal, `cd` into the `server/client` directory and run `npm run webhook` (To be fixed because of localtunnel always crashing...)
 
 # Bugs/errors
